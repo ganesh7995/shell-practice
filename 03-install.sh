@@ -5,3 +5,4 @@ then
     echo -e " \e[31m ERROR:: \e[0m Please run with root access"
 else
     echo "you are running with root access"
+fi
