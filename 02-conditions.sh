@@ -7,3 +7,4 @@ then
 
 else
     echo "Given number is not lessthan 10 "
+fi
