@@ -1,7 +1,7 @@
 #!bin/bash
 
 PERSON1=$1
-PERSON2=$1
+PERSON2=$2
 
 echo "$PERSON1:HI"
 echo "$PERSON2:Hlo,ela unnav"
