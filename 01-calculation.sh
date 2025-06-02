@@ -3,9 +3,9 @@
 PERSON1=ganesh
 PERSON2=chandhu
 
-echo "ganesh:HI"
-echo "chandhu:Hlo,ela unnav"
-echo "ganesh:super nv mari"
-echo "chandhu:baagunna,em chestunnav"
-echo "ganesh:kaali kalavachu kada once"
-echo "chandhu:next month lo vasta"
+echo "$PERSON1:HI"
+echo "$PERSON2:Hlo,ela unnav"
+echo "$PERSON1:super nv mari"
+echo "$PERSON2:baagunna,em chestunnav"
+echo "$PERSON1:kaali kalavachu kada once"
+echo "$PERSON2:next month lo vasta"
