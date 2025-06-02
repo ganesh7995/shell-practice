@@ -5,6 +5,7 @@ then
     echo "ERROR: please run with root access"
 else
     echo "you are already root user"
+fi
 
 VALIDATE (){
     if [ $1 -eq 0 ]
@@ -28,5 +29,4 @@ VALIDATE $? "mysql"
 
 else
     echo "already mysql installed"
-
 fi
