@@ -16,12 +16,13 @@ VALIDATE (){
     fi
 }
 
-dnf list install mysql
+dnf list install mysql -y
 if [ $? -ne 0]
 then
     echo "need to install my sql"
 
 dnf install mysql -y
+
 VALIDATE $? "mysql"
 
 else
