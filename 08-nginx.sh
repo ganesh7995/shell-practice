@@ -12,6 +12,7 @@ VALIDATION () {
 if [ $1 -eq 0 ]
 then
     echo "installation $2 is ... SUCCESS"
+    exit1
 
 else
     echo "installation $2 is ... FAILED"
