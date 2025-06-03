@@ -29,7 +29,7 @@ VALIDATE (){
     fi
 }
 
-dnf list install mysql |tee -a $LOG_FILE
+dnf list installed mysql |tee -a $LOG_FILE
 
 if [ $? -ne 0 ]
 then
