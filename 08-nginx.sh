@@ -34,5 +34,5 @@ VALIDATION $? "nginx"
 
 else
     echo "nginx already installed in your system"
-    exit 1
+   
 fi
