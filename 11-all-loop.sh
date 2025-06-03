@@ -10,20 +10,20 @@ SCRIPT_NAME="$(echo $0 |cut -d "." -f1)"
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 PACKAGES=("mysql" "python3" "nginx")
-echo "script executing date:$(date)" |tee -a $LOG_FILE
+echo "script executing date:$(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]
 then
-    echo -e "$R ERROR $N: please run with root access" |tee -a $LOG_FILE
+    echo -e "$R ERROR $N: please run with root access" | tee -a $LOG_FILE
     exit 1
 else
-    echo "you are already root user" |tee -a$LOG_FILE
+    echo "you are already root user" | tee -a$LOG_FILE
 fi
 
 VALIDATE (){
     if [ $1 -eq 0 ]
     then 
-        echo -e "installing $2 is ..... $G SUCCESS $N" |tee -a $LOG_FILE
+        echo -e "installing $2 is ..... $G SUCCESS $N" | tee -a $LOG_FILE
     else
         echo -e "installing $2 is ....$R Failed $N"
     exit 1
@@ -35,11 +35,12 @@ do
     dnf list installed $package @>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-    echo -e "$G need to install $package $N" |tee -a $LOG_FILE
+    echo -e "$G need to install $package $N" | tee -a $LOG_FILE
 dnf install $package -y @>>$LOG_FILE
 
 VALIDATE $? "$package"
 
 else
-    echo -e "$Y nothing to do $package..already installed $N" |tee -a $LOG_FILE
+    echo -e "$Y nothing to do $package..already installed $N" | tee -a $LOG_FILE
 fi
+done
