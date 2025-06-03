@@ -31,7 +31,7 @@ VALIDATE (){
 
 dnf list install mysql &>>$LOG_FILE
 
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     echo "need to install my sql" &>>$LOG_FILE
 
