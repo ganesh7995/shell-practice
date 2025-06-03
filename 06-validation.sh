@@ -29,13 +29,13 @@ VALIDATE (){
     fi
 }
 
-dnf list installed mysql |tee -a $LOG_FILE
+dnf list installed mysql &>>$LOG_FILE
 
 if [ $? -ne 0 ]
 then
     echo "need to install my sql" |tee -a $LOG_FILE
 
-dnf install mysql -y |tee -a $LOG_FILE
+dnf install mysql -y &>>$LOG_FILE
 
 VALIDATE $? "mysql" 
 
