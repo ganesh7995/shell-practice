@@ -47,5 +47,5 @@ VALIDATION $? "nginx"
 
 else
     echo -e "$Y nginx already installed in your system $N"
-   exit1
+    exit 1
 fi
