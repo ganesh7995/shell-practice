@@ -3,7 +3,7 @@ USERID=$( id -u)
 if [ $USERID -ne 0 ]
 then
     echo "ERROR:run with root user"
-    exit1 1
+    exit 1
 else
     echo "your already root user"
 fi
@@ -27,6 +27,7 @@ if [ $? -eq 0 ]
 
 then
     echo "need to install nginx in your system"
+    exit 1
 
 dnf install nginx -y
 
