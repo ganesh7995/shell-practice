@@ -41,6 +41,6 @@ do
         VALIDATE $? "$package"
 
     else
-        echo -e "nothing to do $package..$Y already installed $N" | tee -a $LOG_FILE
+        echo -e "nothing to do $package..$G already installed $N" | tee -a $LOG_FILE
     fi
 done
