@@ -34,14 +34,14 @@ fi
 
 }
 
-dnf list installed nginx &>> $LOG_FILE
+dnf list installed nginx &>>$LOG_FILE
 
 if [ $? -eq 0 ]
 
 then
     echo -e "$Y need to install nginx in your system $N"
     
-dnf install nginx -y &>> $LOG_FILE
+dnf install nginx -y &>>$LOG_FILE
 
 VALIDATION $? "nginx"
 
