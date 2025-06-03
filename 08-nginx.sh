@@ -46,6 +46,6 @@ dnf install nginx -y &>> $LOG_FILE
 VALIDATION $? "nginx"
 
 else
-    echo -e "$R nginx already installed in your system $N"
+    echo -e "$Y nginx already installed in your system $N"
     exit 1
 fi
