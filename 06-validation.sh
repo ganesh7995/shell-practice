@@ -1,8 +1,20 @@
 USERID=$(id -u)
 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+LOGS_FOLDER="/var/log/shellscript-logs"
+SCRIP_NAME="$(echo $0 |cut -d "." -f1)"
+LOG_FILE="$LOGS_FOLDER/$SCRIP_NAME.log"
+mkdir -p $LOGS_FOLDER
+echo "script executing date:$(date)" &>>$LOG_FILE
+
 if [ $USERID -ne 0 ]
 then
-    echo "ERROR: please run with root access"
+    echo -e "$R ERROR $N: please run with root access" &>>$LOG_FILE
+    exit 1
 else
     echo "you are already root user"
 fi
@@ -10,23 +22,23 @@ fi
 VALIDATE (){
     if [ $1 -eq 0 ]
     then 
-        echo "installing $2 is .....SUCCESS"
+        echo -e "installing $2 is ..... $G SUCCESS $N" &>>$LOG_FILE
     else
-        echo "installing $2 is ....Failed"
+        echo -e "installing $2 is ....$R Failed $N"
     exit 1
     fi
 }
 
-dnf list install mysql
+dnf list install mysql &>>$LOG_FILE
 
 if [ $? -ne 0]
 then
-    echo "need to install my sql"
+    echo "need to install my sql" &>>$LOG_FILE
 
-dnf install mysql -y
+dnf install mysql -y &>>$LOG_FILE
 
-VALIDATE $? "mysql"
+VALIDATE $? "mysql" 
 
 else
-    echo "already mysql installed"
+    echo -e  " $Y already mysql installed $N"
 fi
