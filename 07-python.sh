@@ -19,7 +19,7 @@ exit 1
 fi
 }
 
-dnf list install python3
+dnf list installed python3
 if [ $? -ne 0 ]
 then
     echo "need to install python3 in your system"
