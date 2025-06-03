@@ -8,8 +8,9 @@ N="\e[0m"
 LOGS_FOLDER="/var/log/shellscript-logs"
 SCRIPT_NAME="$(echo $0 |cut -d "." -f1)"
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-mkdir -p $LOGS_FOLDER
 PACKAGES=("mysql" "python3" "nginx")
+mkdir -p $LOGS_FOLDER
+
 echo "script executing date:$(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]
@@ -25,22 +26,21 @@ VALIDATE (){
     then 
         echo -e "installing $2 is ..... $G SUCCESS $N" | tee -a $LOG_FILE
     else
-        echo -e "installing $2 is ....$R Failed $N"
-    exit 1
+        echo -e "installing $2 is ....$R Failed $N" | tee -a $LOG_FILE
+        exit 1
     fi
 }
 
 for package in ${PACKAGES[@]}
 do
     dnf list installed $package @>>$LOG_FILE
-if [ $? -ne 0 ]
-then
-    echo -e "$G need to install $package $N" | tee -a $LOG_FILE
-dnf install $package -y @>>$LOG_FILE
+    if [ $? -ne 0 ]
+    then
+        echo " $package is not installed .. need to install it" | tee -a $LOG_FILE
+        dnf install $package -y @>>$LOG_FILE
+        VALIDATE $? "$package"
 
-VALIDATE $? "$package"
-
-else
-    echo -e "$Y nothing to do $package..already installed $N" | tee -a $LOG_FILE
-fi
+    else
+        echo -e "nothing to do $package..$Y already installed $N" | tee -a $LOG_FILE
+    fi
 done
