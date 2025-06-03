@@ -16,7 +16,7 @@ then
     echo -e "$R ERROR $N: please run with root access" &>>$LOG_FILE
     exit 1
 else
-    echo "you are already root user"
+    echo "you are already root user" &>>$LOG_FILE
 fi
 
 VALIDATE (){
@@ -40,5 +40,5 @@ dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "mysql" 
 
 else
-    echo -e  " $Y already mysql installed $N"
+    echo -e  " $Y already mysql installed $N" &>>$LOG_FILE
 fi
