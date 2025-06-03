@@ -18,7 +18,7 @@ then
     echo -e "$R ERROR $N: please run with root access" | tee -a $LOG_FILE
     exit 1
 else
-    echo "you are already root user" | tee -a$LOG_FILE
+    echo "you are already root user" | tee -a $LOG_FILE
 fi
 
 VALIDATE (){
