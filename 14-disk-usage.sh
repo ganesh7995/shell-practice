@@ -1,6 +1,8 @@
 #! /bin/bash
+
 DISK_USAGE=$(df -hT | grep -v Filesystem)
 DISK_THRESHOLD=1 #Usually its 75%
+
 
 while IFS= read line
 do
